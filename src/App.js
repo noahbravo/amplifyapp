@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { API, Storage } from 'aws-amplify';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { listTodos } from './graphql/queries';
 import { createTodo as createTodoMutation, deleteTodo as deleteTodoMutation } from './graphql/mutations';
 
@@ -17,7 +16,7 @@ function App() {
 
   async function fetchTodos() {
     const apiData = await API.graphql({ query: listTodos });
-    const todosFromAPI = apiData.data.listNotes.items;
+    const todosFromAPI = apiData.data.listTodos.items;
     await Promise.all(todosFromAPI.map(async todo => {
       if (todo.image) {
         const image = await Storage.get(todo.image);
@@ -85,9 +84,8 @@ function App() {
           ))
         }
       </div>
-      <AmplifySignOut />
     </div>
   );
 }
 
-export default withAuthenticator(App);
+export default App;

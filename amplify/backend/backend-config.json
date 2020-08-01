@@ -1,12 +1,5 @@
 {
-	"auth": {
-		"amplifyappbc9dffde": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [],
-			"customAuth": false
-		}
-	},
+	"auth": {},
 	"api": {
 		"amplifyapp": {
 			"service": "AppSync",
